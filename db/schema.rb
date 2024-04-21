@@ -11,19 +11,19 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2024_04_21_063752) do
-  create_table "affiliations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "affiliations", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "locations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "locations", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "people", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "people", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "species"
@@ -34,16 +34,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_21_063752) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "person_affiliations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "person_id", null: false
-    t.bigint "affiliation_id", null: false
+  create_table "person_affiliations", force: :cascade do |t|
+    t.integer "person_id", null: false
+    t.integer "affiliation_id", null: false
     t.index ["affiliation_id"], name: "index_person_affiliations_on_affiliation_id"
     t.index ["person_id"], name: "index_person_affiliations_on_person_id"
   end
 
-  create_table "person_locations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "person_id", null: false
-    t.bigint "location_id", null: false
+  create_table "person_locations", force: :cascade do |t|
+    t.integer "person_id", null: false
+    t.integer "location_id", null: false
     t.index ["location_id"], name: "index_person_locations_on_location_id"
     t.index ["person_id"], name: "index_person_locations_on_person_id"
   end

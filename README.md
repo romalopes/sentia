@@ -4,7 +4,7 @@
 * Ruunning on:
    ruby "3.1.2"
    Rails 7.0.4
-* Database: Mysql
+* Database: sqlite3
 
 
 I implemented using:
