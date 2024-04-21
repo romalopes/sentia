@@ -1,0 +1,45 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>People(<%= @people.count %>)</h1>
+
+
+<%= form_tag people_path, method: :get do %>
+  <input type="text" name="search_param"  />
+  <button type="submit"> Search </button>
+<% end %>
+
+<%= button_to "Import CSV People", import_people_path, method: :post %>
+
+
+<div id="people">
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Name</th> 
+        <th>Species</th>
+        <th>Gender</th>
+        <th>Weapon</th>
+        <th>Vehiicle</th>
+        <th>Locations</th>
+        <th>Affiliations</th>
+        <th>Action</th>
+      <tb>
+    </thead>
+    
+    <tbody>
+      <% @people.each do |person| %>
+        <%= render person %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%= link_to "New person", new_person_path %>
+<%= link_to "Show all people", people_path %>
+
+
+<%= will_paginate @people %>
+
+
+

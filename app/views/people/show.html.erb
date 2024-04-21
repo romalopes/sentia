@@ -1,0 +1,27 @@
+<p style="color: green"><%= notice %></p>
+
+ <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Name</th> 
+        <th>Species</th>
+        <th>Gender</th>
+        <th>Weapon</th>
+        <th>Vehiicle</th>
+        <th>Locations</th>
+        <th>Affiliations</th>
+        <th>Action</th>
+      <tb>
+    </thead>
+    
+    <tbody>
+    <%= render @person %>
+  </tbody>
+</table>
+
+<div>
+  <%= link_to "Edit this person", edit_person_path(@person) %> |
+  <%= link_to "Back to people", people_path %>
+
+  <%= button_to "Destroy this person", @person, method: :delete %>
+</div>

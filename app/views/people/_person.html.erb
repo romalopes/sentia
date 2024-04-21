@@ -1,0 +1,30 @@
+<tr>
+  <td>
+    <%= "#{person.first_name} #{person.last_name}"  %>
+  </td>
+  <td>
+      <%= person.species %>
+  </td>
+  <td>
+      <%= person.gender %>
+  </td>
+  <td>
+    <%= person.weapon %>
+  </td>
+  <td>
+    <%= person.vehicle %>
+  </td>
+  <td>
+    <% person.locations.each do |location| %>
+      <%= link_to location.name, location %> , 
+    <% end %>
+  </td>
+  <td>
+    <% person.affiliations.each do |affiliation| %>
+      <%= link_to affiliation.name, affiliation %> , 
+    <% end %>
+  </td>
+  <td>
+    <%= link_to "Show", person %> | <%= link_to "Edit", edit_person_path(person) %> | <%= button_to "Destroy", person, method: :delete %>
+  </td>
+</tr>   
