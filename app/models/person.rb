@@ -45,18 +45,22 @@ class Person < ApplicationRecord
       weapon = value[i+=1]
       vehicle = value[i+=1]
 
-      person = Person.find_or_create_by(first_name: first_name, last_name: last_name, species: species, gender: gender, weapon:weapon, vehicle: vehicle)
+      # Create the person
+      person = Person.find_or_initialize_by(first_name: first_name, last_name: last_name, species: species, gender: gender, weapon:weapon, vehicle: vehicle)
       if person.new_record?
+        person.save
         total_imported += 1
       else
         total_found += 1
       end
 
+      # Create and add location to person
       location_array.each do |location_name|
         location = Location.find_or_create_by(name: location_name)
         person.locations << location unless person.locations.where(name: location.name).first
       end
 
+      # Create and add affiliations to person
       affiliations_array.each do |affiliation_name|
         affiliation = Affiliation.find_or_create_by(name: affiliation_name)
         person.affiliations << affiliation unless person.affiliations.where(name: affiliation.name).first
